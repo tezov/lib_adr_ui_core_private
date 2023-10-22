@@ -4,9 +4,11 @@ package com.tezov.lib_adr_ui_core.animation
 
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.*
-import com.tezov.lib_kmm_core.async.notifier.Notifier
-import com.tezov.lib_kmm_core.async.notifier.observable.ObservableValue
-import com.tezov.lib_adr_core.async.notifier.observer.value.ObserverValue
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.launch
 
 class AnimationProgress private constructor() {
 
@@ -15,32 +17,25 @@ class AnimationProgress private constructor() {
     private lateinit var isStarted: MutableState<Boolean>
     private lateinit var transitionState: MutableTransitionState<Step>
     private lateinit var transition: Transition<Step>
-    private val notifier = Notifier(ObservableValue<Boolean>(), false)
+    private val notifier = MutableSharedFlow<Unit>(
+        extraBufferCapacity = 1,
+        onBufferOverflow = BufferOverflow.DROP_OLDEST
+    )
+
+    fun collectCompletionOnce(scope:CoroutineScope, block: suspend () -> Unit) = scope.launch {
+        notifier.firstOrNull {
+            block()
+            true
+        }
+    }
 
     val isIdle
         get() = !isStarted.value && (transitionState.currentState == Step.Start_Idle || transitionState.currentState == Step.End_Idle)
-
-    //TODO SUGAR SYNTAXE
-    fun register(observer: ObserverValue<Boolean>) = notifier.register(observer)
-
-    fun unregister(observer: ObserverValue<Boolean>) {
-        notifier.unregister(observer)
-    }
-
-    fun unregisterAll(owner: Any) {
-        notifier.unregisterAll(owner)
-    }
 
     fun start() {
         if(isStarted.value) return
         transitionState.targetState = Step.Start_Idle
         isStarted.value = true
-    }
-
-    private fun onDone() {
-        notifier.obtainPacket().also {
-            it.value = true
-        }
     }
 
     @Composable
@@ -67,7 +62,7 @@ class AnimationProgress private constructor() {
                     Step.End_Idle -> {
                         if(isStarted.value){
                             isStarted.value = false
-                            onDone()
+                            notifier.tryEmit(Unit)
                         }
                     }
                 }
@@ -85,7 +80,7 @@ class AnimationProgress private constructor() {
         }
     ):State<Float> {
         val clampedValue = remember {
-            mutableStateOf(startValue)
+            mutableFloatStateOf(startValue)
         }
         val animatedFloat = transition.animateFloat(
             transitionSpec = {
@@ -101,7 +96,7 @@ class AnimationProgress private constructor() {
                 else -> endValue
             }
         }
-        clampedValue.value = when (transitionState.targetState) {
+        clampedValue.floatValue = when (transitionState.targetState) {
             Step.Running -> animatedFloat.value
             Step.Start_Idle -> startValue
             Step.End_Idle -> endValue
