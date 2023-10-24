@@ -4,6 +4,8 @@ package com.tezov.lib_adr_ui_core.animation
 
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.*
+import com.tezov.lib_kmm_core.async.notifier.Event
+import com.tezov.lib_kmm_core.async.notifier.Notifier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -17,17 +19,8 @@ class AnimationProgress private constructor() {
     private lateinit var isStarted: MutableState<Boolean>
     private lateinit var transitionState: MutableTransitionState<Step>
     private lateinit var transition: Transition<Step>
-    private val notifier = MutableSharedFlow<Unit>(
-        extraBufferCapacity = 1,
-        onBufferOverflow = BufferOverflow.DROP_OLDEST
-    )
-
-    fun collectCompletionOnce(scope:CoroutineScope, block: suspend () -> Unit) = scope.launch {
-        notifier.firstOrNull {
-            block()
-            true
-        }
-    }
+    private val notifier = Notifier.Emitter<Unit>()
+    val collect get() = notifier.createCollector
 
     val isIdle
         get() = !isStarted.value && (transitionState.currentState == Step.Start_Idle || transitionState.currentState == Step.End_Idle)
