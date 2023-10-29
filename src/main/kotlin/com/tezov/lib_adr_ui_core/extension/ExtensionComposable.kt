@@ -3,9 +3,9 @@
 package com.tezov.lib_adr_ui_core.extension
 
 import androidx.compose.runtime.Composable
-import com.tezov.lib_kmm_core.extension.ExtensionList.popOrNull
-import com.tezov.lib_kmm_core.extension.ExtensionList.push
-import com.tezov.lib_kmm_core.extension.ExtensionList.NULL_INDEX
+import com.tezov.lib_adr_core.extension.ExtensionCollection.popOrNull
+import com.tezov.lib_adr_core.extension.ExtensionCollection.push
+import com.tezov.lib_adr_core.extension.ExtensionCollection.NULL_INDEX
 
 object ExtensionComposable {
 

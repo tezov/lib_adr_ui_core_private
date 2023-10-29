@@ -15,7 +15,7 @@ import com.tezov.lib_adr_ui_core.theme.style.OutfitPalette.Direction.Style.Compa
 import com.tezov.lib_adr_ui_core.theme.style.OutfitPalette.Size.Style.Companion.asPaletteSize
 import com.tezov.lib_adr_ui_core.theme.style.OutfitPaletteDirection
 import com.tezov.lib_adr_ui_core.theme.style.OutfitPaletteSize
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 
 val MaterialTheme.dimensionsCommonExtended
     @Composable

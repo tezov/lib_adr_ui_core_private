@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.tezov.lib_kmm_core.type.primaire.Scale
+import com.tezov.lib_adr_core.type.primaire.Scale
 
 fun Modifier.size(size: DpSize): Modifier {
     return if (size.width != 0.dp && size.height != 0.dp) {

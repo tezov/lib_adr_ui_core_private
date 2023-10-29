@@ -5,7 +5,7 @@ package com.tezov.lib_adr_ui_core.theme.style
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import com.tezov.lib_adr_ui_core.theme.theme.ThemeColorsExtended
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 import androidx.compose.ui.graphics.Color as ColorImport
 
 typealias OutfitTextStateColor = OutfitText.StateColor.Style

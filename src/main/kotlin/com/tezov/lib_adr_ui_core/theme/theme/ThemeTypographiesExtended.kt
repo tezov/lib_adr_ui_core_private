@@ -10,7 +10,7 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import com.tezov.lib_adr_ui_core.theme.style.OutfitPaletteSize
 import com.tezov.lib_adr_ui_core.theme.style.OutfitText.StateColor.Style.Companion.asPaletteSize
 import com.tezov.lib_adr_ui_core.theme.style.OutfitTextStateColor
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 
 val MaterialTheme.typographiesExtended
     @Composable

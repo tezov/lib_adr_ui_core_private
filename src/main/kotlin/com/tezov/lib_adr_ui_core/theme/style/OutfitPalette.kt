@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import com.tezov.lib_adr_ui_core.type.primaire.DpSize
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 import androidx.compose.ui.graphics.Color as ColorImport
 
 typealias OutfitPaletteColor = OutfitPalette.Color.Style

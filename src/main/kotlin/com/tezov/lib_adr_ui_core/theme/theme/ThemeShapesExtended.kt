@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.tezov.lib_adr_ui_core.theme.style.OutfitPaletteSize
 import com.tezov.lib_adr_ui_core.theme.style.OutfitShape.StateColor.Style.Companion.asPaletteSize
 import com.tezov.lib_adr_ui_core.theme.style.OutfitShapeStateColor
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 
 val MaterialTheme.shapesExtended
     @Composable

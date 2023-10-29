@@ -4,7 +4,7 @@ package com.tezov.lib_adr_ui_core.theme.style
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 import java.time.format.TextStyle
 import kotlin.reflect.KClass
 

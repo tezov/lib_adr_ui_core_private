@@ -6,8 +6,8 @@ import android.annotation.SuppressLint
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
-import com.tezov.lib_kmm_core.type.collection.ListEntry
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.type.collection.ListEntry
 
 abstract class AnimationCompound<KEY : Any, STEP_PARENT : Any>(
     private val animators: ListEntry<KEY, Animator<Any>> = ListEntry()

@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.tezov.lib_adr_ui_core.modifier.thenOnTrue
 import com.tezov.lib_adr_ui_core.theme.style.OutfitShape.Size.Companion.asShapeSize
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 import androidx.compose.ui.graphics.Color as ColorImport
 
 fun Modifier.background(

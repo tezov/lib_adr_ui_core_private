@@ -4,8 +4,8 @@ package com.tezov.lib_adr_ui_core.animation
 
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.*
-import com.tezov.lib_kmm_core.async.notifier.Event
-import com.tezov.lib_kmm_core.async.notifier.Notifier
+import com.tezov.lib_adr_core.async.notifier.Event
+import com.tezov.lib_adr_core.async.notifier.Notifier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.MutableSharedFlow

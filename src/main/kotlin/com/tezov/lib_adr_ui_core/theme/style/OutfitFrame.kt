@@ -4,7 +4,7 @@ package com.tezov.lib_adr_ui_core.theme.style
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.tezov.lib_kmm_core.delegate.DelegateNullFallBack
+import com.tezov.lib_adr_core.delegate.DelegateNullFallBack
 
 fun Modifier.background(
     style: OutfitFrame.StateColor.Style,
