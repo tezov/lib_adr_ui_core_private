@@ -9,7 +9,7 @@ tezovConfig {
 
 android {
     tezovCatalog {
-        with("projectVersion") {
+        with("projectVersions") {
             compileSdk = int("defaultCompileSdk")
             compileOptions {
                 sourceCompatibility = javaVersion("javaSource")
@@ -35,7 +35,7 @@ dependencies {
     api(project(":lib_adr_core"))
     tezovCatalog {
 //api
-        with("projectPath.dependencies.adr_compose") {
+        with("libraries.runtime.adr_compose") {
             api(string("ui"))
             api(string("ui_util"))
             api(string("runtime"))
