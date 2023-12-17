@@ -31,10 +31,8 @@ class AnimationProgress private constructor() {
             mutableStateOf(false)
         }
         transitionState = remember {
-            mutableStateOf(
-                MutableTransitionState(Step.Start_Idle)
-            )
-        }.value
+            MutableTransitionState(Step.Start_Idle)
+        }
         with(transitionState) {
             if (isIdle) {
                 when (currentState) {
